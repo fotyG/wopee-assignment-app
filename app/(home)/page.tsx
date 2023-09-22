@@ -1,9 +1,16 @@
-import { DialogOnboarding } from "@/components/dialog-onboarding";
+// import checkProfile from "@/lib/checkProfile";
+import { db } from "@/lib/db";
+import { auth } from "@clerk/nextjs";
 import Users from "@/components/users";
-import checkProfile from "@/lib/checkProfile";
+import { DialogOnboarding } from "@/components/dialog-onboarding";
 
 export default async function Home() {
-  const profile = await checkProfile();
+  const user = auth();
+  const profile = await db.profile.findFirst({
+    where: {
+      userId: user.userId || "",
+    },
+  });
 
   if (!profile) {
     return <DialogOnboarding />;

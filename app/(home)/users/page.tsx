@@ -1,17 +1,23 @@
 import Row from "@/components/row";
 import {
   Table,
+  TableRow,
   TableBody,
-  TableCaption,
   TableHead,
   TableHeader,
-  TableRow,
+  TableCaption,
 } from "@/components/ui/table";
-import checkProfile from "@/lib/checkProfile";
+// import checkProfile from "@/lib/checkProfile";
 import { db } from "@/lib/db";
+import { auth } from "@clerk/nextjs";
 
 const UsersPage = async () => {
-  const profile = await checkProfile();
+  const user = auth();
+  const profile = await db.profile.findFirst({
+    where: {
+      userId: user.userId || "",
+    },
+  });
 
   const users = await db.profile.findMany();
 
