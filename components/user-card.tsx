@@ -30,7 +30,7 @@ const UserCard = ({ profile }: UserCardProps) => {
         src={profile.profileImage || ""}
         className="object-cover aspect-square rounded-md"
       />
-      <div className="flex flex-col justify-between flex-2">
+      <div className="flex flex-col justify-between">
         <div>
           <p className="text-xl font-semibold dark:text-white/90">
             {profile.firstName} {profile.lastName}
@@ -43,7 +43,7 @@ const UserCard = ({ profile }: UserCardProps) => {
               {profile.email}
             </p>
           </Link>
-          <p className="text-slate-700 dark:text-white/90 text-sm mt-2 line-clamp-1">
+          <p className="text-slate-700 dark:text-white/90 text-sm mt-2 line-clamp-4">
             {profile.description}
           </p>
         </div>

@@ -1,4 +1,3 @@
-import Row from "@/components/row";
 import {
   Table,
   TableRow,
@@ -7,8 +6,9 @@ import {
   TableHeader,
   TableCaption,
 } from "@/components/ui/table";
-// import checkProfile from "@/lib/checkProfile";
+
 import { db } from "@/lib/db";
+import Row from "@/components/row";
 import { auth } from "@clerk/nextjs";
 
 const UsersPage = async () => {
